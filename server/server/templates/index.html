@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Username</th>
+                <th scope="col">Entrada Manutino</th>
+                <th scope="col">Saída Matutino</th>
+                <th scope="col">Retorno Verspertino</th>
+                <th scope="col">Saída Verspertino</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td scope="row">{{u.nome}}</td>
+                <td>{{u.username}}</td>
+                <td>{{u.jor1}}</td>
+                <td>{{u.jor2}}</td>
+                <td>{{u.jor3}}</td>
+                <td>{{u.jor4}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Hostname</th>
+                <th scope="col">Username</th>
+                <th scope="col">Visto</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for d in dados %}
+            <tr>
+                <td>{{d.hostname}}</td>
+                <td>{{d.username}}</td>
+                <td>{{d.visto}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Hostname</th>
+                <th scope="col">Ação</th>
+                <th scope="col">Hora</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for s in sinais %}
+            <tr>
+                <td>{{s.username}}</td>
+                <td>{{s.hostname}}</td>
+                <td>{{s.acao}}</td>
+                <td>{{s.hora}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
