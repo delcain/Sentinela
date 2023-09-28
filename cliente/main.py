@@ -17,7 +17,7 @@ def jornada():
         hostname = socket.gethostname()
         # URL da API
         # Coleta os dados baseado no nome do usuário logado no windows
-        url = 'http://sentinela.cuidadodigital.com.br/username/?username=' + user
+        url = 'http://sentinela.meudominio.com.br/username/?username=' + user
         response = requests.get(url=url)
         response_data = response.json()
 
@@ -35,7 +35,7 @@ def jornada():
             if hosttimestring > jor2 and hosttimestring < jor3:
                 subprocess.Popen(r'%windir%\system32\mshta.exe \\sari.adv.br\\NETLOGON\\sari_splash_bloquear.hta', shell=True)
                 # Envia post para API como ação executada
-                requests.post("http://sentinela.cuidadodigital.com.br/api/sinal/", json={
+                requests.post("http://sentinela.meudominio.com.br/api/sinal/", json={
                 "username": username,
                 "hostname": hostname,
                 "acao": "lockstation"})
@@ -46,7 +46,7 @@ def jornada():
                 # Chama Splah com agradecimento
                 subprocess.Popen(r'%windir%\system32\mshta.exe \\sari.adv.br\\NETLOGON\\sari_splash_desligar.hta', shell=True)
                 # Faz o post na API informando a ação
-                requests.post("http://sentinela.cuidadodigital.com.br/api/sinal/", json={
+                requests.post("http://sentinela.meudominio.com.br/api/sinal/", json={
                     "username": username,
                     "hostname": hostname,
                     "acao": "shutdown"})
@@ -63,7 +63,7 @@ def dados():
             "username": username,
             "hostname": hostname,
         }
-        requests.post("http://sentinela.cuidadodigital.com.br/api/dados/", json=dados)
+        requests.post("http://sentinela.meudominio.com.br/api/dados/", json=dados)
         print("Envio de Sinal:", username, hostname, dados)
 
     except Exception:
